@@ -86,7 +86,7 @@ The bottom left number is the number of **False Negatives**.
 
 The bottom right number is the number of **True Positives**.
 
-To first see the confusion matrix of the model, we should first do ```cross_val_predict``` to first make some predictions:
+To first see the confusion matrix of the model, we should first do `cross_val_predict` to first make some predictions:
 
 ```python
 from sklearn.model_selection import cross_val_predict
