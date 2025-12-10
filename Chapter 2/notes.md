@@ -19,7 +19,7 @@ Let's create two variables: X and y for features and labels respectively:
 X, y = mnist.data, mnist.target
 ```
 
-There are 70,000 images in total, and each image has has 784 features / pixels. This means that each image has a resolution of 28x28.
+There are 70,000 images in total, and each image has 784 features / pixels. This means that each image has a resolution of 28x28.
 
 Let's split this into training set and test set:
 
@@ -28,16 +28,16 @@ X_train, X_test, y_train, y_test = X[:60000], X[60000:], y[:60000], y[60000:]
 ```
 ## Training a Binary Classifier
 
-Lets start training a binary classifier. A binary classifier is basically a type of classifier where our model has to choose from just two options, like cat or dog, five or not-5, comedy or horror etc. In our case, we need to train a binary classifier that classifies whether a given image is of a 5 or not-5. Lets narrow down our labels into just 5 or not 5:
+Let's start training a binary classifier. A binary classifier is basically a type of classifier where our model has to choose from just two options, like cat or dog, five or not-5, comedy or horror etc. In our case, we need to train a binary classifier that classifies whether a given image is of a 5 or not-5. Let's narrow down our labels into just 5 or not 5:
 
 ```python
 y_train_5 = (y_train == '5')
 y_test_5 = (y_test == '5')
 ```
 
-This means that y_train_5 will have the value of True if a given image has the label of '5', and False if its not 5.
+This means that y_train_5 will have the value of True if a given image has the label of '5', and False if it's not 5.
 
-Now lets train a SGD Classifier. An SGD Classifier uses gradient descent to tweak the parameters of the model, but instead of tweaking all the parameters at once, it looks at one instance / gradient at a time, so it is very efficient for larger datasets. I will cover more about gradient descent in the next chapter.
+Now let's train a SGD Classifier. An SGD Classifier uses gradient descent to tweak the parameters of the model, but instead of tweaking all the parameters at once, it looks at one instance / gradient at a time, so it is very efficient for larger datasets. I will cover more about gradient descent in the next chapter.
 
 ```python
 from sklearn.linear_model import SGDClassifier
@@ -47,13 +47,13 @@ sgd_clf = SGDClassifier(random_state=42)
 sgd_clf.fit(X_train, y_train_5)
 ```
 
-Finally! You have built the model, everything is perfect right? well, not exactly, we now have to measure the performance of this model, and it might sound easy in words, but measuring the performance of a classifier is significantly harder than a regression model. There are a lot of things you have to measure, we will cover these right now:
+Finally! You’ve built the model. Everything perfect? Well, not exactly. Now we need to measure its performance, and it might sound easy in words, but measuring the performance of a classifier is significantly harder than a regression model. There are a lot of things you have to measure, we will cover these right now:
 
 * Confusion Matrix
 * Precision Score
-* Recall Scre
+* Recall Score
 * F1 Score
-* ROC (Reciever Operating Curve)
+* ROC (Receiver Operating Characteristic)
 * ROC-AUC (Area Under the Curve)
 
 Okay! Let's get right into this.
@@ -132,9 +132,9 @@ The F1 score favors classifiers that have similar precision and recall.
 
 ### Precision/Recall Trade-off
 
-To understand this tradeoff, lets first understand how the SGDClassifier makes it classification decisions. For each instance, it computes a score based on a decision function. If that score is greater than a threshold, it assigns the instance to the positive class, otherwise it assigns it to the negative class.
+To understand this tradeoff, let's first understand how the SGDClassifier makes it classification decisions. For each instance, it computes a score based on a decision function. If that score is greater than a threshold, it assigns the instance to the positive class, otherwise it assigns it to the negative class.
 
-This results in a problem: You have to balance precision and recall, but its very hard to do so. If you have 99% precision, there might be a very high chance that your recall is really low!
+This results in a problem: You have to balance precision and recall, but it's very hard to do so. If you have 99% precision, recall could be very low!
 
 ### ROC Curve
 
@@ -144,4 +144,4 @@ Another way to compare classifiers is to measure the area under the curve (AUC).
 
 # Conclusion
 
-Finally! You have done it! You learnt about SGDClassifier, you learnt too many performance metrics to count and now you shoul be pretty comfortable making some pretty good classification projects! But this is not the end! In the next chapter, we will cover the theory behind these machine learning models we have treated as black boxes for the last two chapters! I will teach you about how they make decisions, what happens under the hood, which is really useful if you want to actually deeply understand machine learning, or if you want to go into research (Like ME!). Overall, this was a lot of fun, see you soon!
+Finally! You have done it! You learnt about SGDClassifier, we’ve covered too many performance metrics to count and now you should be pretty comfortable making some pretty good classification projects! But this is not the end! In the next chapter, we will cover the theory behind these machine learning models, which we’ve treated as black boxes for the last two chapters. I’ll explain how they make decisions and what happens under the hood, which is really useful if you want to actually deeply understand machine learning, or if you want to go into research (Like ME!). Overall, this was a lot of fun, see you soon!
